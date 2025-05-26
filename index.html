@@ -23,13 +23,22 @@
     p {
       color: #ccc;
     }
+    section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #f5f5f5;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
     .videos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
     }
     .video {
       background: #1e1e1e;
@@ -37,6 +46,7 @@
       overflow: hidden;
       box-shadow: 0 0 20px rgba(255,255,255,0.05);
       transition: transform 0.3s ease;
+      padding-bottom: 1rem;
     }
     .video:hover {
       transform: scale(1.03);
@@ -46,6 +56,26 @@
       height: 200px;
       border: none;
       display: block;
+    }
+    .title {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: #ccc;
+      text-align: center;
+    }
+    .parcours {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid #333;
+    }
+    .parcours h2 {
+      color: #f5f5f5;
+      margin-bottom: 1rem;
+    }
+    .parcours p {
+      color: #bbb;
+      line-height: 1.6;
     }
     footer {
       text-align: center;
@@ -58,29 +88,46 @@
 </head>
 <body>
   <header>
-    <h1>Lincoln Portfolio Vidéo</h1>
-    <p>Découvrez mes montages vidéos, extraits de projets récents.</p>
+    <h1>LINCOLN Portfolio Vidéo</h1>
+    <p>Découvrez mes CREATIONS vidéos : shorts, formats longs, et mon parcours.</p>
   </header>
 
-  <section class="videos">
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/DZIASl9q90s" allowfullscreen></iframe>
+  <section>
+    <h2>🎬 Vidéos Courtes (Shorts)</h2>
+    <div class="videos">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+        <div class="title">Nom de la vidéo courte 1</div>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+        <div class="title">Nom de la vidéo courte 2</div>
+      </div>
     </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+  </section>
+
+  <section>
+    <h2>🎥 Vidéos Longues</h2>
+    <div class="videos">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+        <div class="title">Nom de la vidéo longue 1</div>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+        <div class="title">Nom de la vidéo longue 2</div>
+      </div>
     </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/DZIASl9q90s" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" allowfullscreen></iframe>
-    </div>
+  </section>
+
+  <section class="parcours">
+    <h2>💼 Mon Parcours</h2>
+    <p>
+      Je suis monteur vidéo passionné depuis plusieurs années. J'ai travaillé sur des projets variés allant du contenu YouTube au montage de clips musicaux et de documentaires courts. 
+      J'utilise principalement Adobe Premiere Pro, DaVinci Resolve et After Effects.
+      <br><br>
+      Mon objectif est de raconter des histoires percutantes à travers le montage, avec un rythme maîtrisé et un sens du détail.
+    </p>
   </section>
 
   <footer>
