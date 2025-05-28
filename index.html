@@ -1,5 +1,3 @@
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -347,6 +345,8 @@
             padding: 20px;
             transform: translateY(100%);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
         
         .portfolio-item:hover .portfolio-overlay {
@@ -357,7 +357,38 @@
             transform: scale(1.05);
         }
         
-        /* Add Video Modal */
+        .video-format-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .format-tab {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .format-tab:hover, .format-tab.active {
+            background: var(--accent);
+        }
+        
+        .format-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+        
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -365,7 +396,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -374,19 +405,56 @@
         .modal-content {
             background: white;
             width: 90%;
-            max-width: 600px;
+            max-width: 900px;
             border-radius: 10px;
             padding: 30px;
             position: relative;
+        }
+        
+        .video-modal-content {
+            background: transparent;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            padding: 0;
         }
         
         .close-modal {
             position: absolute;
             top: 15px;
             right: 15px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: #777;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .close-modal:hover {
+            background: var(--accent);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
         }
         
         .modal-form {
@@ -405,11 +473,23 @@
             font-weight: 500;
         }
         
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: inherit;
+        }
+        
+        .formats-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .format-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         /* Contact Section */
@@ -470,6 +550,61 @@
             resize: vertical;
         }
         
+        /* Social Links Section */
+        .social-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .social-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .social-name {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .social-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
         /* Footer */
         footer {
             background: var(--dark);
@@ -522,6 +657,56 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             opacity: 0.7;
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+        
+        .admin-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .admin-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .admin-panel-content {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            display: none;
+        }
+        
+        .admin-panel-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            text-align: center;
+        }
+        
+        .admin-panel-content.active {
+            display: block;
         }
         
         /* Responsive */
@@ -580,6 +765,21 @@
                 flex-direction: column;
                 gap: 30px;
             }
+            
+            .admin-panel {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .admin-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -594,6 +794,7 @@
                     <li><a href="#apropos">À Propos</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#social">Réseaux</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-toggle">
@@ -641,13 +842,13 @@
                             <div class="exp-text">Projets réalisés</div>
                         </div>
                         <div class="exp-item">
-                            <div class="exp-number">100%</div>
+                            <div class="exp-number">99.9%</div>
                             <div class="exp-text">Satisfaction client</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.pexels.com/photos/8100053/pexels-photo-8100053.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lincoln le Monteur">
+                    <img src="https://www.pexels.com/fr-fr/photo/homme-en-chemise-a-manches-raglan-a-l-aide-d-ordinateur-2330137/"Lincoln le Monteur">
                 </div>
             </div>
         </div>
@@ -721,51 +922,54 @@
                 <button class="filter-btn" data-filter="promotion">Promotion</button>
                 <button class="filter-btn" data-filter="tutoriel">Tutoriel</button>
                 <button class="filter-btn" data-filter="evenement">Événement</button>
+                <button class="filter-btn" data-filter="long">Long</button>
+                <button class="filter-btn" data-filter="court">Court</button>
             </div>
             
             <div class="portfolio-grid">
                 <!-- Portfolio items will be added here dynamically -->
             </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <button id="add-video-btn" class="btn btn-accent">
-                    <i class="fas fa-plus"></i> Ajouter une vidéo au portfolio
-                </button>
-            </div>
         </div>
     </section>
 
-    <!-- Add Video Modal -->
-    <div class="modal" id="add-video-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Ajouter une vidéo au portfolio</h2>
-            <form class="modal-form" id="video-form">
-                <div class="form-group">
-                    <label for="video-title">Titre de la vidéo</label>
-                    <input type="text" id="video-title" required>
+    <!-- Social Media Section -->
+    <section class="social-section" id="social">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mes Réseaux Sociaux</h2>
+                <p>Suivez-moi pour voir mes dernières créations</p>
+            </div>
+            
+            <div class="social-grid">
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3 class="social-name">YouTube</h3>
+                    <p>Vidéos long format et tutoriels complets</p>
+                    <a href="https://youtube.com/lincolnmontage" class="social-link" target="_blank">Visiter ma chaîne</a>
                 </div>
-                <div class="form-group">
-                    <label for="video-category">Catégorie</label>
-                    <select id="video-category" required>
-                        <option value="entreprise">Entreprise</option>
-                        <option value="promotion">Promotion</option>
-                        <option value="tutoriel">Tutoriel</option>
-                        <option value="evenement">Événement</option>
-                    </select>
+                
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 class="social-name">Instagram</h3>
+                    <p>Vidéos courtes et extraits de mes projets</p>
+                    <a href="https://instagram.com/lincolnmontage" class="social-link" target="_blank">Suivre mon compte</a>
                 </div>
-                <div class="form-group">
-                    <label for="video-url">URL de la vidéo (YouTube/Vimeo)</label>
-                    <input type="url" id="video-url" required>
+                
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3 class="social-name">TikTok</h3>
+                    <p>Contenu court et dynamique pour les tendances</p>
+                    <a href="https://tiktok.com/@lincolnmontage" class="social-link" target="_blank">Suivre mon profil</a>
                 </div>
-                <div class="form-group">
-                    <label for="video-thumbnail">Miniature (URL de l'image)</label>
-                    <input type="url" id="video-thumbnail" required>
-                </div>
-                <button type="submit" class="btn">Ajouter la vidéo</button>
-            </form>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -796,7 +1000,7 @@
                         </div>
                         <div>
                             <h4>Téléphone</h4>
-                            <p>------------</p>
+                            <p>--------------</p>
                         </div>
                     </div>
                     
@@ -806,16 +1010,16 @@
                         </div>
                         <div>
                             <h4>Localisation</h4>
-                            <p>-------------</p>
+                            <p>----------</p>
                         </div>
                     </div>
                     
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://facebook.com/lincolnmontage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/lincolnmontage" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/lincolnmontage" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/in/lincolnmontage" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/lincolnmontage" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -849,6 +1053,7 @@
                         <li><a href="#apropos">À Propos</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#social">Réseaux</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -870,6 +1075,82 @@
             </div>
         </div>
     </footer>
+
+    <!-- Video Modal -->
+    <div class="modal" id="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container" id="video-player">
+                <!-- Video will be embedded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Video Modal -->
+    <div class="modal" id="add-video-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Ajouter une vidéo au portfolio</h2>
+            <form class="modal-form" id="video-form">
+                <div class="form-group">
+                    <label for="video-title">Titre de la vidéo</label>
+                    <input type="text" id="video-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="video-category">Catégorie</label>
+                    <select id="video-category" required>
+                        <option value="entreprise">Entreprise</option>
+                        <option value="promotion">Promotion</option>
+                        <option value="tutoriel">Tutoriel</option>
+                        <option value="evenement">Événement</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Format</label>
+                    <div class="formats-container">
+                        <label class="format-option">
+                            <input type="checkbox" name="video-format" value="long"> Long (YouTube)
+                        </label>
+                        <label class="format-option">
+                            <input type="checkbox" name="video-format" value="court"> Court (Instagram/TikTok)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="video-url">URL de la vidéo (YouTube/Vimeo)</label>
+                    <input type="url" id="video-url" required>
+                </div>
+                <div class="form-group">
+                    <label for="video-thumbnail">Miniature (URL de l'image)</label>
+                    <input type="url" id="video-thumbnail" required>
+                </div>
+                <button type="submit" class="btn">Ajouter la vidéo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <button class="admin-btn" id="admin-btn">
+            <i class="fas fa-lock"></i>
+        </button>
+        <div class="admin-panel-content" id="admin-panel">
+            <h3>Accès Administrateur</h3>
+            <div class="form-group">
+                <label for="admin-password">Mot de passe:</label>
+                <input type="password" id="admin-password" placeholder="Entrez le mot de passe">
+            </div>
+            <button class="btn" id="admin-login">Se connecter</button>
+            <div id="admin-actions" style="display: none; margin-top: 20px;">
+                <button class="btn btn-accent" id="add-video-btn">
+                    <i class="fas fa-plus"></i> Ajouter une vidéo
+                </button>
+                <button class="btn" id="logout-btn" style="margin-top: 10px;">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Mobile Navigation Toggle
@@ -916,7 +1197,11 @@
             const portfolioItems = document.querySelectorAll('.portfolio-item');
             
             portfolioItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
+                const formats = item.dataset.formats.split(',');
+                
+                if (filter === 'all' || 
+                    item.dataset.category === filter || 
+                    formats.includes(filter)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
@@ -926,36 +1211,45 @@
         
         // Portfolio Management
         const portfolioGrid = document.querySelector('.portfolio-grid');
-        const addVideoBtn = document.getElementById('add-video-btn');
-        const videoModal = document.getElementById('add-video-modal');
-        const closeModal = document.querySelector('.close-modal');
+        const videoModal = document.getElementById('video-modal');
+        const addVideoModal = document.getElementById('add-video-modal');
+        const closeModals = document.querySelectorAll('.close-modal');
         const videoForm = document.getElementById('video-form');
+        const videoPlayer = document.getElementById('video-player');
         
-        // Sample portfolio data (would normally come from a database)
+        // Sample portfolio data
         let portfolioData = [
             {
+                id: 1,
                 title: "Campagne Publicitaire - Mode",
                 category: "promotion",
+                formats: ["long", "court"],
                 thumbnail: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                url: "https://www.youtube.com/embed/VIDEO_ID"
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             },
             {
+                id: 2,
                 title: "Tutoriel Logiciel",
                 category: "tutoriel",
+                formats: ["long"],
                 thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                url: "https://www.youtube.com/embed/VIDEO_ID"
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             },
             {
+                id: 3,
                 title: "Présentation Entreprise",
                 category: "entreprise",
+                formats: ["long"],
                 thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                url: "https://www.youtube.com/embed/VIDEO_ID"
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             },
             {
+                id: 4,
                 title: "Conférence Tech",
                 category: "evenement",
+                formats: ["court"],
                 thumbnail: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                url: "https://www.youtube.com/embed/VIDEO_ID"
+                url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             }
         ];
         
@@ -967,17 +1261,72 @@
                 const portfolioItem = document.createElement('div');
                 portfolioItem.className = 'portfolio-item';
                 portfolioItem.dataset.category = item.category;
+                portfolioItem.dataset.formats = item.formats.join(',');
+                
+                // Generate badges for formats
+                let formatBadges = '';
+                item.formats.forEach(format => {
+                    formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
+                });
                 
                 portfolioItem.innerHTML = `
+                    ${formatBadges}
                     <img src="${item.thumbnail}" alt="${item.title}">
                     <div class="portfolio-overlay">
                         <h4>${item.title}</h4>
                         <p>${getCategoryName(item.category)}</p>
-                        <a href="${item.url}" target="_blank" class="btn" style="margin-top: 10px">Voir la vidéo</a>
+                        <button class="btn watch-btn" data-url="${item.url}">
+                            <i class="fas fa-play"></i> Regarder
+                        </button>
+                        
+                        <div class="video-format-tabs">
+                            ${item.formats.includes('long') ? 
+                                `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
+                            ${item.formats.includes('court') ? 
+                                `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
+                        </div>
+                        
+                        <button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
+                            <i class="fas fa-trash"></i> Supprimer
+                        </button>
                     </div>
                 `;
                 
                 portfolioGrid.appendChild(portfolioItem);
+            });
+            
+            // Add event listeners for watch buttons
+            document.querySelectorAll('.watch-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const videoUrl = btn.dataset.url;
+                    videoPlayer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    videoModal.style.display = 'flex';
+                });
+            });
+            
+            // Add event listeners for delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.dataset.id);
+                    if (confirm('Voulez-vous vraiment supprimer cette vidéo?')) {
+                        portfolioData = portfolioData.filter(video => video.id !== id);
+                        renderPortfolio();
+                    }
+                });
+            });
+            
+            // Add event listeners for format tabs
+            document.querySelectorAll('.format-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const tabs = tab.parentNode.querySelectorAll('.format-tab');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // In a real app, this would load the appropriate video format
+                    alert(`Chargement de la version ${tab.dataset.format}...`);
+                });
             });
         }
         
@@ -992,17 +1341,21 @@
         }
         
         // Modal functionality
-        addVideoBtn.addEventListener('click', () => {
-            videoModal.style.display = 'flex';
-        });
+        function openAddVideoModal() {
+            addVideoModal.style.display = 'flex';
+        }
         
-        closeModal.addEventListener('click', () => {
-            videoModal.style.display = 'none';
+        closeModals.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                videoModal.style.display = 'none';
+                addVideoModal.style.display = 'none';
+            });
         });
         
         window.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
+            if (e.target === videoModal || e.target === addVideoModal) {
                 videoModal.style.display = 'none';
+                addVideoModal.style.display = 'none';
             }
         });
         
@@ -1010,16 +1363,27 @@
         videoForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            // Get selected formats
+            const formatCheckboxes = document.querySelectorAll('input[name="video-format"]:checked');
+            const formats = Array.from(formatCheckboxes).map(cb => cb.value);
+            
+            if (formats.length === 0) {
+                alert('Veuillez sélectionner au moins un format');
+                return;
+            }
+            
             const newVideo = {
+                id: Date.now(), // Unique ID
                 title: document.getElementById('video-title').value,
                 category: document.getElementById('video-category').value,
+                formats: formats,
                 thumbnail: document.getElementById('video-thumbnail').value,
                 url: document.getElementById('video-url').value
             };
             
             portfolioData.push(newVideo);
             renderPortfolio();
-            videoModal.style.display = 'none';
+            addVideoModal.style.display = 'none';
             videoForm.reset();
             
             alert('Vidéo ajoutée au portfolio avec succès!');
@@ -1031,6 +1395,51 @@
             e.preventDefault();
             alert('Merci pour votre message! Je vous répondrai très rapidement.');
             contactForm.reset();
+        });
+        
+        // Admin Panel Functionality
+        const adminBtn = document.getElementById('admin-btn');
+        const adminPanel = document.getElementById('admin-panel');
+        const adminPasswordInput = document.getElementById('admin-password');
+        const adminLoginBtn = document.getElementById('admin-login');
+        const adminActions = document.getElementById('admin-actions');
+        const logoutBtn = document.getElementById('logout-btn');
+        const addVideoBtn = document.getElementById('add-video-btn');
+        
+        // Toggle admin panel
+        adminBtn.addEventListener('click', () => {
+            adminPanel.classList.toggle('active');
+        });
+        
+        // Admin login
+        adminLoginBtn.addEventListener('click', () => {
+            if (adminPasswordInput.value === "Lincoln123") {
+                adminActions.style.display = 'block';
+                adminPasswordInput.value = '';
+                alert('Connecté en tant qu\'administrateur');
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        });
+        
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            adminActions.style.display = 'none';
+            adminPanel.classList.remove('active');
+            alert('Déconnexion réussie');
+        });
+        
+        // Open add video modal from admin panel
+        addVideoBtn.addEventListener('click', () => {
+            openAddVideoModal();
+            adminPanel.classList.remove('active');
+        });
+        
+        // Close admin panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.admin-panel') && adminPanel.classList.contains('active')) {
+                adminPanel.classList.remove('active');
+            }
         });
         
         // Initialize portfolio on page load
