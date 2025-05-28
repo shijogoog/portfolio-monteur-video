@@ -1253,48 +1253,55 @@
             }
         ];
         
+        let isAdminLoggedIn = false; // État de connexion admin
+        
         // Function to render portfolio items
         function renderPortfolio() {
             portfolioGrid.innerHTML = '';
             
-            portfolioData.forEach(item => {
-                const portfolioItem = document.createElement('div');
-                portfolioItem.className = 'portfolio-item';
-                portfolioItem.dataset.category = item.category;
-                portfolioItem.dataset.formats = item.formats.join(',');
+             portfolioData.forEach(item => {
+        const portfolioItem = document.createElement('div');
+        portfolioItem.className = 'portfolio-item';
+        portfolioItem.dataset.category = item.category;
+        portfolioItem.dataset.formats = item.formats.join(',');
+        
+        // Generate badges for formats
+        let formatBadges = '';
+        item.formats.forEach(format => {
+            formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
+        });
+        
+        // Condition pour afficher le bouton supprimer
+        const deleteButton = isAdminLoggedIn ? 
+            `<button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
+                <i class="fas fa-trash"></i> Supprimer
+            </button>` : 
+            '';
+        
+        portfolioItem.innerHTML = `
+            ${formatBadges}
+            <img src="${item.thumbnail}" alt="${item.title}">
+            <div class="portfolio-overlay">
+                <h4>${item.title}</h4>
+                <p>${getCategoryName(item.category)}</p>
+                <button class="btn watch-btn" data-url="${item.url}">
+                    <i class="fas fa-play"></i> Regarder
+                </button>
                 
-                // Generate badges for formats
-                let formatBadges = '';
-                item.formats.forEach(format => {
-                    formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
-                });
+                <div class="video-format-tabs">
+                    ${item.formats.includes('long') ? 
+                        `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
+                    ${item.formats.includes('court') ? 
+                        `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
+                </div>
                 
-                portfolioItem.innerHTML = `
-                    ${formatBadges}
-                    <img src="${item.thumbnail}" alt="${item.title}">
-                    <div class="portfolio-overlay">
-                        <h4>${item.title}</h4>
-                        <p>${getCategoryName(item.category)}</p>
-                        <button class="btn watch-btn" data-url="${item.url}">
-                            <i class="fas fa-play"></i> Regarder
-                        </button>
-                        
-                        <div class="video-format-tabs">
-                            ${item.formats.includes('long') ? 
-                                `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
-                            ${item.formats.includes('court') ? 
-                                `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
-                        </div>
-                        
-                        <button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
-                            <i class="fas fa-trash"></i> Supprimer
-                        </button>
-                    </div>
-                `;
-                
-                portfolioGrid.appendChild(portfolioItem);
-            });
-            
+                ${deleteButton}
+            </div>
+        `;
+        
+        portfolioGrid.appendChild(portfolioItem);
+    });
+           
             // Add event listeners for watch buttons
             document.querySelectorAll('.watch-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1413,21 +1420,25 @@
         
         // Admin login
         adminLoginBtn.addEventListener('click', () => {
-            if (adminPasswordInput.value === "Lincoln123") {
-                adminActions.style.display = 'block';
-                adminPasswordInput.value = '';
-                alert('Connecté en tant qu\'administrateur');
-            } else {
-                alert('Mot de passe incorrect');
-            }
-        });
-        
+               if (adminPasswordInput.value === "Lincoln123") {
+        adminActions.style.display = 'block';
+        adminPasswordInput.value = '';
+        isAdminLoggedIn = true; // Mettre à jour l'état
+        renderPortfolio(); // Actualiser l'affichage
+        alert('Connecté en tant qu\'administrateur');
+    } else {
+        alert('Mot de passe incorrect');
+    }
+});
+       
         // Logout
         logoutBtn.addEventListener('click', () => {
-            adminActions.style.display = 'none';
-            adminPanel.classList.remove('active');
-            alert('Déconnexion réussie');
-        });
+               adminActions.style.display = 'none';
+    adminPanel.classList.remove('active');
+    isAdminLoggedIn = false; // Mettre à jour l'état
+    renderPortfolio(); // Actualiser l'affichage
+    alert('Déconnexion réussie');
+});
         
         // Open add video modal from admin panel
         addVideoBtn.addEventListener('click', () => {
