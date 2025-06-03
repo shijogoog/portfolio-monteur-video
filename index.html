@@ -388,6 +388,81 @@
             z-index: 10;
         }
         
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 350px;
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .client-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .client-details h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .client-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        .testimonial-date {
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+            color: #777;
+            font-size: 0.85rem;
+        }
+        
         /* Modal Styles */
         .modal {
             display: none;
@@ -722,6 +797,11 @@
             .contact-content {
                 flex-direction: column;
             }
+            
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -794,6 +874,7 @@
                     <li><a href="#apropos">À Propos</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
                     <li><a href="#social">Réseaux</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -848,7 +929,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.pexels.com/photos/8102677/pexels-photo-8102677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2 alt="Lincoln le Monteur">
+                    <img src="https://images.pexels.com/photos/8102677/pexels-photo-8102677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Lincoln le Monteur">
                 </div>
             </div>
         </div>
@@ -928,6 +1009,87 @@
             
             <div class="portfolio-grid">
                 <!-- Portfolio items will be added here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages Clients</h2>
+                <p>Ce que disent mes clients satisfaits</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sophie Martin">
+                        </div>
+                        <div class="client-details">
+                            <h4>Sophie Martin</h4>
+                            <p class="client-role">Directrice Marketing, TechVision</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Lincoln a transformé notre vidéo corporate en une véritable œuvre d'art. Son sens du rythme et sa créativité ont dépassé toutes nos attentes. Les retours de nos clients ont été exceptionnels !"
+                    </p>
+                    <span class="testimonial-date">15 mai 2023</span>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Thomas Dubois">
+                        </div>
+                        <div class="client-details">
+                            <h4>Thomas Dubois</h4>
+                            <p class="client-role">Producteur, Studio Lumière</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Travailler avec Lincoln a été une révélation. Sa maîtrise des effets spéciaux et son sens artistique ont donné vie à notre projet. Professionnel, réactif et d'une grande créativité. Je recommande vivement !"
+                    </p>
+                    <span class="testimonial-date">2 avril 2023</span>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Émilie Leroy">
+                        </div>
+                        <div class="client-details">
+                            <h4>Émilie Leroy</h4>
+                            <p class="client-role">Créatrice de contenu, VoyageZen</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Lincoln a su capturer l'essence de mes voyages à travers ses montages. Ses transitions fluides et son choix musical parfait ont fait exploser mon engagement sur les réseaux. Un talent rare !"
+                    </p>
+                    <span class="testimonial-date">28 mars 2023</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1053,6 +1215,7 @@
                         <li><a href="#apropos">À Propos</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
                         <li><a href="#social">Réseaux</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1153,6 +1316,26 @@
     </div>
 
     <script>
+        // Fonction pour échapper les entrées HTML
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Fonction pour valider les URL
+        function isValidUrl(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
         // Mobile Navigation Toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -1259,55 +1442,59 @@
         function renderPortfolio() {
             portfolioGrid.innerHTML = '';
             
-             portfolioData.forEach(item => {
-        const portfolioItem = document.createElement('div');
-        portfolioItem.className = 'portfolio-item';
-        portfolioItem.dataset.category = item.category;
-        portfolioItem.dataset.formats = item.formats.join(',');
-        
-        // Generate badges for formats
-        let formatBadges = '';
-        item.formats.forEach(format => {
-            formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
-        });
-        
-        // Condition pour afficher le bouton supprimer
-        const deleteButton = isAdminLoggedIn ? 
-            `<button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
-                <i class="fas fa-trash"></i> Supprimer
-            </button>` : 
-            '';
-        
-        portfolioItem.innerHTML = `
-            ${formatBadges}
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <div class="portfolio-overlay">
-                <h4>${item.title}</h4>
-                <p>${getCategoryName(item.category)}</p>
-                <button class="btn watch-btn" data-url="${item.url}">
-                    <i class="fas fa-play"></i> Regarder
-                </button>
+            portfolioData.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.dataset.category = item.category;
+                portfolioItem.dataset.formats = item.formats.join(',');
                 
-                <div class="video-format-tabs">
-                    ${item.formats.includes('long') ? 
-                        `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
-                    ${item.formats.includes('court') ? 
-                        `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
-                </div>
+                // Generate badges for formats
+                let formatBadges = '';
+                item.formats.forEach(format => {
+                    formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
+                });
                 
-                ${deleteButton}
-            </div>
-        `;
-        
-        portfolioGrid.appendChild(portfolioItem);
-    });
+                // Condition pour afficher le bouton supprimer
+                const deleteButton = isAdminLoggedIn ? 
+                    `<button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
+                        <i class="fas fa-trash"></i> Supprimer
+                    </button>` : 
+                    '';
+                
+                portfolioItem.innerHTML = `
+                    ${formatBadges}
+                    <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}">
+                    <div class="portfolio-overlay">
+                        <h4>${escapeHtml(item.title)}</h4>
+                        <p>${getCategoryName(item.category)}</p>
+                        <button class="btn watch-btn" data-url="${escapeHtml(item.url)}">
+                            <i class="fas fa-play"></i> Regarder
+                        </button>
+                        
+                        <div class="video-format-tabs">
+                            ${item.formats.includes('long') ? 
+                                `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
+                            ${item.formats.includes('court') ? 
+                                `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
+                        </div>
+                        
+                        ${deleteButton}
+                    </div>
+                `;
+                
+                portfolioGrid.appendChild(portfolioItem);
+            });
            
             // Add event listeners for watch buttons
             document.querySelectorAll('.watch-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const videoUrl = btn.dataset.url;
-                    videoPlayer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-                    videoModal.style.display = 'flex';
+                    if (isValidUrl(videoUrl)) {
+                        videoPlayer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        videoModal.style.display = 'flex';
+                    } else {
+                        alert("L'URL de la vidéo n'est pas valide");
+                    }
                 });
             });
             
@@ -1356,6 +1543,7 @@
             closeBtn.addEventListener('click', () => {
                 videoModal.style.display = 'none';
                 addVideoModal.style.display = 'none';
+                videoPlayer.innerHTML = ''; // Clear video player
             });
         });
         
@@ -1363,6 +1551,7 @@
             if (e.target === videoModal || e.target === addVideoModal) {
                 videoModal.style.display = 'none';
                 addVideoModal.style.display = 'none';
+                videoPlayer.innerHTML = ''; // Clear video player
             }
         });
         
@@ -1379,13 +1568,33 @@
                 return;
             }
             
+            const title = document.getElementById('video-title').value;
+            const thumbnail = document.getElementById('video-thumbnail').value;
+            const url = document.getElementById('video-url').value;
+            
+            // Validation des entrées
+            if (!title.trim()) {
+                alert('Veuillez entrer un titre valide');
+                return;
+            }
+            
+            if (!isValidUrl(thumbnail)) {
+                alert("L'URL de la miniature n'est pas valide");
+                return;
+            }
+            
+            if (!isValidUrl(url)) {
+                alert("L'URL de la vidéo n'est pas valide");
+                return;
+            }
+            
             const newVideo = {
                 id: Date.now(), // Unique ID
-                title: document.getElementById('video-title').value,
+                title: title,
                 category: document.getElementById('video-category').value,
                 formats: formats,
-                thumbnail: document.getElementById('video-thumbnail').value,
-                url: document.getElementById('video-url').value
+                thumbnail: thumbnail,
+                url: url
             };
             
             portfolioData.push(newVideo);
@@ -1420,25 +1629,33 @@
         
         // Admin login
         adminLoginBtn.addEventListener('click', () => {
-               if (adminPasswordInput.value === "Lincoln123") {
-        adminActions.style.display = 'block';
-        adminPasswordInput.value = '';
-        isAdminLoggedIn = true; // Mettre à jour l'état
-        renderPortfolio(); // Actualiser l'affichage
-        alert('Connecté en tant qu\'administrateur');
-    } else {
-        alert('Mot de passe incorrect');
-    }
-});
-       
+            // Vérification CSRF simulée
+            const csrfToken = localStorage.getItem('csrfToken');
+            if (!csrfToken || csrfToken !== 'validToken') {
+                alert('Erreur de sécurité. Veuillez recharger la page.');
+                return;
+            }
+            
+            // Vérification du mot de passe
+            if (adminPasswordInput.value === "Lincoln123") {
+                adminActions.style.display = 'block';
+                adminPasswordInput.value = '';
+                isAdminLoggedIn = true;
+                renderPortfolio();
+                alert('Connecté en tant qu\'administrateur');
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        });
+        
         // Logout
         logoutBtn.addEventListener('click', () => {
-               adminActions.style.display = 'none';
-    adminPanel.classList.remove('active');
-    isAdminLoggedIn = false; // Mettre à jour l'état
-    renderPortfolio(); // Actualiser l'affichage
-    alert('Déconnexion réussie');
-});
+            adminActions.style.display = 'none';
+            adminPanel.classList.remove('active');
+            isAdminLoggedIn = false;
+            renderPortfolio();
+            alert('Déconnexion réussie');
+        });
         
         // Open add video modal from admin panel
         addVideoBtn.addEventListener('click', () => {
@@ -1454,7 +1671,11 @@
         });
         
         // Initialize portfolio on page load
-        document.addEventListener('DOMContentLoaded', renderPortfolio);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Génération d'un jeton CSRF simulé
+            localStorage.setItem('csrfToken', 'validToken');
+            renderPortfolio();
+        });
     </script>
 </body>
 </html>
