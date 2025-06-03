@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr"> width: 100%;<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
+        /* Variables CSS */
         :root {
             --primary: #3498db;
             --secondary: #2c3e50;
@@ -14,6 +16,7 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
             --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         * {
@@ -105,6 +108,12 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .navbar {
@@ -120,6 +129,13 @@
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
         }
         
         .logo span {
@@ -179,11 +195,14 @@
             text-align: center;
             color: white;
             padding-top: 80px;
+            position: relative;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
@@ -191,12 +210,16 @@
             margin-bottom: 20px;
             color: white;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero-btns {
@@ -204,6 +227,23 @@
             justify-content: center;
             gap: 15px;
             margin-top: 30px;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
         }
         
         /* About Section */
@@ -225,13 +265,19 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            position: relative;
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
         }
         
         .experience {
@@ -243,6 +289,15 @@
         .exp-item {
             text-align: center;
             flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--light);
+            transition: var(--transition);
+        }
+        
+        .exp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
         
         .exp-number {
@@ -270,17 +325,25 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             text-align: center;
+            border: 2px solid transparent;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
         }
         
         .service-icon {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            color: var(--accent);
+            transform: rotate(10deg) scale(1.1);
         }
         
         .service-card h3 {
@@ -324,7 +387,7 @@
             border-radius: 10px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             cursor: pointer;
         }
         
@@ -434,10 +497,12 @@
             align-items: center;
             justify-content: center;
             z-index: 10;
+            transition: var(--transition);
         }
         
         .close-modal:hover {
             background: var(--accent);
+            transform: rotate(90deg);
         }
         
         .video-container {
@@ -478,6 +543,13 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         
         .formats-container {
@@ -523,6 +595,13 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 25px;
+            transition: var(--transition);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .contact-icon {
@@ -571,6 +650,8 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         
         .social-card:hover {
@@ -578,10 +659,33 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
+        .social-card:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .social-card:hover:after {
+            transform: scaleX(1);
+        }
+        
         .social-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .social-card:hover .social-icon {
+            color: var(--accent);
+            transform: scale(1.2);
         }
         
         .social-name {
@@ -626,6 +730,25 @@
             color: white;
             margin-bottom: 20px;
             font-size: 1.3rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
         }
         
         .social-links {
@@ -709,6 +832,34 @@
             display: block;
         }
         
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
+        .toast i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -785,10 +936,10 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Lincoln<span>Montage</span></a>
+                <a href="#" class="logo"><i class="fas fa-video"></i>Lincoln<span>Montage</span></a>
                 <ul class="nav-links">
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#apropos">À Propos</a></li>
@@ -816,6 +967,9 @@
                 </div>
             </div>
         </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -829,8 +983,8 @@
                 <div class="about-text">
                     <h3>Bonjour, je suis Lincoln</h3>
                     <p>Avec 2 ans d'expérience dans le montage vidéo, j'ai développé une expertise dans la création de contenus visuels captivants. Ma passion est de transformer des images brutes en histoires mémorables qui captivent votre audience.</p>
-                    <p>Je me spécialise dans le montage de vidéos d'entreprise, de contenu promotionnel, de tutoriels et d'événements. .</p>
-                    <p>Chaque projet est pour moi une nouvelle opportunité de créer quelque chose d'unique et d'impactant.</p>
+                    <p>Je me spécialise dans le montage de vidéos d'entreprise, de contenu promotionnel, de tutoriels et d'événements. Mon objectif est de donner vie à votre vision avec créativité et précision.</p>
+                    <p>Chaque projet est pour moi une nouvelle opportunité de créer quelque chose d'unique et d'impactant. Je travaille avec les outils les plus récents pour garantir une qualité optimale.</p>
                     
                     <div class="experience">
                         <div class="exp-item">
@@ -848,7 +1002,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.pexels.com/photos/8102677/pexels-photo-8102677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2 alt="Lincoln le Monteur">
+                    <img src="https://images.pexels.com/photos/8102677/pexels-photo-8102677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Lincoln le Monteur">
                 </div>
             </div>
         </div>
@@ -982,7 +1136,7 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Disponible pour vos projets</h3>
-                    <p>Vous avez un projet vidéo en tête? Discutons-en! Je suis toujours ouvert à de nouvelles collaborations.</p>
+                    <p>Vous avez un projet vidéo en tête? Discutons-en! Je suis toujours ouvert à de nouvelles collaborations et prêt à relever de nouveaux défis créatifs.</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
@@ -1000,7 +1154,7 @@
                         </div>
                         <div>
                             <h4>Téléphone</h4>
-                            <p>--------------</p>
+                            <p>+33 6 12 34 56 78</p>
                         </div>
                     </div>
                     
@@ -1010,7 +1164,7 @@
                         </div>
                         <div>
                             <h4>Localisation</h4>
-                            <p>----------</p>
+                            <p>Paris, France</p>
                         </div>
                     </div>
                     
@@ -1044,6 +1198,11 @@
                 <div class="footer-col">
                     <h3>Lincoln Montage</h3>
                     <p>Monteur vidéo professionnel spécialisé dans la création de contenus captivants pour entreprises et particuliers.</p>
+                    <div class="social-links">
+                        <a href="https://youtube.com/lincolnmontage" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com/lincolnmontage" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@lincolnmontage" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-col">
@@ -1066,6 +1225,7 @@
                         <li>Tutoriels & Formations</li>
                         <li>Événements & Conférences</li>
                         <li>Motion Design</li>
+                        <li>Design Sonore</li>
                     </ul>
                 </div>
             </div>
@@ -1152,6 +1312,12 @@
         </div>
     </div>
 
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Message envoyé avec succès!</span>
+    </div>
+
     <script>
         // Mobile Navigation Toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
@@ -1176,6 +1342,24 @@
                     });
                 }
             });
+        });
+        
+        // Scroll down button
+        document.querySelector('.scroll-down').addEventListener('click', () => {
+            window.scrollTo({
+                top: document.querySelector('#apropos').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
         
         // Portfolio Filtering
@@ -1259,49 +1443,49 @@
         function renderPortfolio() {
             portfolioGrid.innerHTML = '';
             
-             portfolioData.forEach(item => {
-        const portfolioItem = document.createElement('div');
-        portfolioItem.className = 'portfolio-item';
-        portfolioItem.dataset.category = item.category;
-        portfolioItem.dataset.formats = item.formats.join(',');
-        
-        // Generate badges for formats
-        let formatBadges = '';
-        item.formats.forEach(format => {
-            formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
-        });
-        
-        // Condition pour afficher le bouton supprimer
-        const deleteButton = isAdminLoggedIn ? 
-            `<button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
-                <i class="fas fa-trash"></i> Supprimer
-            </button>` : 
-            '';
-        
-        portfolioItem.innerHTML = `
-            ${formatBadges}
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <div class="portfolio-overlay">
-                <h4>${item.title}</h4>
-                <p>${getCategoryName(item.category)}</p>
-                <button class="btn watch-btn" data-url="${item.url}">
-                    <i class="fas fa-play"></i> Regarder
-                </button>
+            portfolioData.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.dataset.category = item.category;
+                portfolioItem.dataset.formats = item.formats.join(',');
                 
-                <div class="video-format-tabs">
-                    ${item.formats.includes('long') ? 
-                        `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
-                    ${item.formats.includes('court') ? 
-                        `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
-                </div>
+                // Generate badges for formats
+                let formatBadges = '';
+                item.formats.forEach(format => {
+                    formatBadges += `<div class="format-badge">${format === 'long' ? 'Long' : 'Court'}</div>`;
+                });
                 
-                ${deleteButton}
-            </div>
-        `;
-        
-        portfolioGrid.appendChild(portfolioItem);
-    });
-           
+                // Condition pour afficher le bouton supprimer
+                const deleteButton = isAdminLoggedIn ? 
+                    `<button class="btn delete-btn" data-id="${item.id}" style="margin-top: 10px; background: rgba(231,76,60,0.8);">
+                        <i class="fas fa-trash"></i> Supprimer
+                    </button>` : 
+                    '';
+                
+                portfolioItem.innerHTML = `
+                    ${formatBadges}
+                    <img src="${item.thumbnail}" alt="${item.title}">
+                    <div class="portfolio-overlay">
+                        <h4>${item.title}</h4>
+                        <p>${getCategoryName(item.category)}</p>
+                        <button class="btn watch-btn" data-url="${item.url}">
+                            <i class="fas fa-play"></i> Regarder
+                        </button>
+                        
+                        <div class="video-format-tabs">
+                            ${item.formats.includes('long') ? 
+                                `<div class="format-tab active" data-format="long">Long (YouTube)</div>` : ''}
+                            ${item.formats.includes('court') ? 
+                                `<div class="format-tab" data-format="court">Court (Instagram)</div>` : ''}
+                        </div>
+                        
+                        ${deleteButton}
+                    </div>
+                `;
+                
+                portfolioGrid.appendChild(portfolioItem);
+            });
+            
             // Add event listeners for watch buttons
             document.querySelectorAll('.watch-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1319,6 +1503,7 @@
                     if (confirm('Voulez-vous vraiment supprimer cette vidéo?')) {
                         portfolioData = portfolioData.filter(video => video.id !== id);
                         renderPortfolio();
+                        showToast('Vidéo supprimée avec succès!');
                     }
                 });
             });
@@ -1332,7 +1517,7 @@
                     tab.classList.add('active');
                     
                     // In a real app, this would load the appropriate video format
-                    alert(`Chargement de la version ${tab.dataset.format}...`);
+                    showToast(`Chargement de la version ${tab.dataset.format}...`);
                 });
             });
         }
@@ -1375,7 +1560,7 @@
             const formats = Array.from(formatCheckboxes).map(cb => cb.value);
             
             if (formats.length === 0) {
-                alert('Veuillez sélectionner au moins un format');
+                showToast('Veuillez sélectionner au moins un format');
                 return;
             }
             
@@ -1393,14 +1578,14 @@
             addVideoModal.style.display = 'none';
             videoForm.reset();
             
-            alert('Vidéo ajoutée au portfolio avec succès!');
+            showToast('Vidéo ajoutée au portfolio avec succès!');
         });
         
         // Contact form submission
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Merci pour votre message! Je vous répondrai très rapidement.');
+            showToast('Merci pour votre message! Je vous répondrai très rapidement.');
             contactForm.reset();
         });
         
@@ -1420,25 +1605,25 @@
         
         // Admin login
         adminLoginBtn.addEventListener('click', () => {
-               if (adminPasswordInput.value === "Lincoln123") {
-        adminActions.style.display = 'block';
-        adminPasswordInput.value = '';
-        isAdminLoggedIn = true; // Mettre à jour l'état
-        renderPortfolio(); // Actualiser l'affichage
-        alert('Connecté en tant qu\'administrateur');
-    } else {
-        alert('Mot de passe incorrect');
-    }
-});
-       
+            if (adminPasswordInput.value === "Lincoln123") {
+                adminActions.style.display = 'block';
+                adminPasswordInput.value = '';
+                isAdminLoggedIn = true; // Mettre à jour l'état
+                renderPortfolio(); // Actualiser l'affichage
+                showToast('Connecté en tant qu\'administrateur');
+            } else {
+                showToast('Mot de passe incorrect');
+            }
+        });
+        
         // Logout
         logoutBtn.addEventListener('click', () => {
-               adminActions.style.display = 'none';
-    adminPanel.classList.remove('active');
-    isAdminLoggedIn = false; // Mettre à jour l'état
-    renderPortfolio(); // Actualiser l'affichage
-    alert('Déconnexion réussie');
-});
+            adminActions.style.display = 'none';
+            adminPanel.classList.remove('active');
+            isAdminLoggedIn = false; // Mettre à jour l'état
+            renderPortfolio(); // Actualiser l'affichage
+            showToast('Déconnexion réussie');
+        });
         
         // Open add video modal from admin panel
         addVideoBtn.addEventListener('click', () => {
@@ -1452,6 +1637,19 @@
                 adminPanel.classList.remove('active');
             }
         });
+        
+        // Toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
         
         // Initialize portfolio on page load
         document.addEventListener('DOMContentLoaded', renderPortfolio);
